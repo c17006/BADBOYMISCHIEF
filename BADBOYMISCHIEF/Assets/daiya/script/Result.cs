@@ -3,188 +3,135 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Result : MonoBehaviour {
+    [SerializeField]
+    private Text scoreText;
+    [SerializeField]
+    private Text normalteacherText;
+    [SerializeField]
+    private Text peteacherText;
+    [SerializeField]
+    private Text scienceteacherText;
+    [SerializeField]
+    private Text assistantprincipalteacherText;
+    [SerializeField]
+    private Text headteacherText;
+    [SerializeField]
+    private Text passedCountText;
+    [SerializeField]
+    private GameObject pop;
+    [SerializeField]
+    private GameObject nextButton;
 
-    private string evaluation;
-    public Text evatext;
-    public Text Score;
-    private int x;
-    public Text Teacher;
-    public Text PTTeacher;
-    public Text ScienceTeacher;
-    public Text kyoutou;
-    public Text HeadTeacher;
-    public Text In;
-    public GameObject Pop;
-    public GameObject NextButton;
-
-    public GameObject eva_star0;
-    public GameObject eva_star1;
-    public GameObject eva_star2;
-
-    private float time;
+    // 評価用の星のイメージ
+    [SerializeField]
+    private GameObject[] starImages;
+    // シーン遷移のディレイ
+    private float resultCloseTime = 2.0f;
+    // 評価の基準
+    private int[,] stageEvaluationStandard = new int[,] {{ 230, 180, 130 },
+                                                         { 300, 250, 200 },
+                                                         { 300, 250, 200 },
+                                                         { 350, 300, 250 },
+                                                         { 350, 300, 250 } };
 
 
     void Start() {
-        eva_star0.SetActive(false);
-        eva_star1.SetActive(false);
-        eva_star2.SetActive(false);
-
-        Pop.SetActive(false);
-
-        EvaCal();
-
-        Score.text = GameDirector.score.ToString() + "点";
-        Teacher.text = "× " + sensei.TeacherD.ToString();
-        PTTeacher.text = "× " + sensei.PTTeacherD.ToString();
-        ScienceTeacher.text = "× " + sensei.ScienceTeacherD.ToString();
-        kyoutou.text = "× " + sensei.kyoutouD.ToString();
-        HeadTeacher.text = "× " + sensei.HeadTeacherD.ToString();
-        In.text = "通した数 " + sensei.In.ToString();
-
+        HideGameObjects();
+        CheckClearStage();
+        ShowScoreDetail();
     }
 
     void Update() {
-        time += Time.deltaTime;
-        if (GameDirector.clearstage == "Stage5" && Input.touchCount > 0 && time >= 2.0f) {
-            Destroy(NextButton);
-            Pop.SetActive(true);
+        CloseResultScene();
+    }
 
-        }
-        else if (Input.touchCount > 0 && time >= 2.0f) {
-            Pop.SetActive(true);
-
+    // リザルトシーンを送らせて遷移させる
+    private void CloseResultScene() {
+        resultCloseTime -= Time.deltaTime;
+        if (GameDirector.clearStage == "Stage5" && Input.touchCount > 0 && resultCloseTime <= 0) {
+            Destroy(nextButton);
+            pop.SetActive(true);
+        } else if (Input.touchCount > 0 && resultCloseTime <= 0) {
+            pop.SetActive(true);
         }
     }
 
-    public void EvaCal() {
-        switch (GameDirector.clearstage) {
-            case "Stage1":
-                if (PlayerPrefs.GetInt("HighScore1") < GameDirector.score)
-                    PlayerPrefs.SetInt("HighScore1", GameDirector.score);
+    // ゲームオブジェクトを非表示にする
+    private void HideGameObjects() {
+        for (int i = 0; i < starImages.Length; i++) {
+            starImages[i].SetActive(false);
+        }
+        pop.SetActive(false);
+    }
 
-                if (GameDirector.score >= 230) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                    eva_star2.SetActive(true);
-                }
-                else if (GameDirector.score >= 180) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                }
-                else if (GameDirector.score >= 130) {
-                    eva_star0.SetActive(true);
-                }
-                else if (GameDirector.score < 130) {
-                }
+    // スコアの詳細を表示する
+    private void ShowScoreDetail() {
+        scoreText.text = GameDirector.score.ToString() + "点";
+        normalteacherText.text = "× " + sensei.TeacherD.ToString();
+        peteacherText.text = "× " + sensei.PTTeacherD.ToString();
+        scienceteacherText.text = "× " + sensei.ScienceTeacherD.ToString();
+        assistantprincipalteacherText.text = "× " + sensei.kyoutouD.ToString();
+        headteacherText.text = "× " + sensei.HeadTeacherD.ToString();
+        passedCountText.text = "通した数 " + sensei.In.ToString();
+    }
 
-                break;
+    // クリアステージを確認する
+    private void CheckClearStage() {
+        int stageNumber = int.Parse(GameDirector.clearStage.Substring(GameDirector.clearStage.Length - 1));
+        CalculateEvaluation(stageNumber);
+    }
 
-            case "Stage2":
-                if (PlayerPrefs.GetInt("HighScore2") < GameDirector.score)
-                    PlayerPrefs.SetInt("HighScore2", GameDirector.score);
+    // 評価を計算する
+    private void CalculateEvaluation(int stageNumber) {
+        // ハイスコアの更新
+        if (PlayerPrefs.GetInt("HighScore" + stageNumber) < GameDirector.score) {
+            PlayerPrefs.SetInt("HighScore" + stageNumber, GameDirector.score);
+        }
 
-                if (GameDirector.score >= 300) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                    eva_star2.SetActive(true);
-                }
-                else if (GameDirector.score >= 250) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                }
-                else if (GameDirector.score >= 200) {
-                    eva_star0.SetActive(true);
-                }
-                else if (GameDirector.score < 200) {
-                }
-
-                break;
-
-            case "Stage3":
-                if (PlayerPrefs.GetInt("HighScore3") < GameDirector.score)
-                    PlayerPrefs.SetInt("HighScore3", GameDirector.score);
-
-                if (GameDirector.score >= 300) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                    eva_star2.SetActive(true);
-                }
-                else if (GameDirector.score >= 250) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                }
-                else if (GameDirector.score >= 200) {
-                    eva_star0.SetActive(true);
-                }
-                else if (GameDirector.score < 200) {
-                }
-                break;
-
-            case "Stage4":
-                if (PlayerPrefs.GetInt("HighScore4") < GameDirector.score)
-                    PlayerPrefs.SetInt("HighScore4", GameDirector.score);
-
-                if (GameDirector.score >= 350) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                    eva_star2.SetActive(true);
-                }
-                else if (GameDirector.score >= 300) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                }
-                else if (GameDirector.score >= 250) {
-                    eva_star0.SetActive(true);
-                }
-                else if (GameDirector.score < 250) {
-                }
-
-                break;
-
-            case "Stage5":
-                if (PlayerPrefs.GetInt("HighScore5") < GameDirector.score)
-                    PlayerPrefs.SetInt("HighScore5", GameDirector.score);
-
-                if (GameDirector.score >= 350) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                    eva_star2.SetActive(true);
-                }
-                else if (GameDirector.score >= 300) {
-                    eva_star0.SetActive(true);
-                    eva_star1.SetActive(true);
-                }
-                else if (GameDirector.score >= 250) {
-                    eva_star0.SetActive(true);
-                }
-                else if (GameDirector.score < 250) {
-                }
-
-                break;
+        // スコアによって星の数を決める
+        if (GameDirector.score >= stageEvaluationStandard[stageNumber - 1, 0]) {
+            for (int i = 0; i < starImages.Length; i++) {
+                starImages[i].SetActive(true);
+            }
+        } else if (GameDirector.score >= stageEvaluationStandard[stageNumber - 1, 1]) {
+            for (int i = 0; i < starImages.Length - 1; i++) {
+                starImages[i].SetActive(true);
+            }
+        } else if (GameDirector.score >= stageEvaluationStandard[stageNumber - 1, 2]) {
+            for (int i = 0; i < starImages.Length - 2; i++) {
+                starImages[i].SetActive(true);
+            }
         }
     }
 
-    public void Gotitle() {
+    // もう一度同じシーンへ遷移する
+    public void GoRestart() {
+        SceneManager.LoadScene(GameDirector.clearStage);
+
+    }
+
+    // タイトルシーンへ遷移する
+    public void GoTitle() {
         SceneManager.LoadScene("Title");
     }
 
-    public void Gonext() {
-        if (GameDirector.clearstage == "Stage1") {
-            SceneManager.LoadScene("Stage2");
+    // ネクストステージへ遷移する
+    public void GoNext() {
+        switch (GameDirector.clearStage) {
+            case "Stage1":
+                SceneManager.LoadScene("Stage2");
+                break;
+            case "Stage2":
+                SceneManager.LoadScene("Stage3");
+                break;
+            case "Stage3":
+                SceneManager.LoadScene("Stage4");
+                break;
+            case "Stage4":
+                SceneManager.LoadScene("Stage5");
+                break;
+            default:
+                break;
         }
-        else if (GameDirector.clearstage == "Stage2") {
-            SceneManager.LoadScene("Stage3");
-        }
-        else if (GameDirector.clearstage == "Stage3") {
-            SceneManager.LoadScene("Stage4");
-        }
-        else if (GameDirector.clearstage == "Stage4") {
-            SceneManager.LoadScene("Stage5");
-        }
-    }
-
-    public void Gorestart() {
-        SceneManager.LoadScene(GameDirector.clearstage);
-
     }
 }

@@ -50,10 +50,13 @@ public class sensei : MonoBehaviour
         {
             GetComponent<AudioSource>().PlayOneShot(recast);
 
-            playersc.gumtime = 2;
-            playersc.bakutikutime = 2.5f;
-            playersc.dogtime = 5;
-            playersc.cointime = 5;
+            for(int i =0; i < playersc.itemTime.Length; i++) {
+                playersc.itemTime[i] = playersc.itemTime[i];
+            }
+            //playersc.gumtime = 2;
+            //playersc.bakutikutime = 2.5f;
+            //playersc.dogtime = 5;
+            //playersc.cointime = 5;
 
             /*recastRan = Random.Range(0, 4);
             if (recastRan == 0)

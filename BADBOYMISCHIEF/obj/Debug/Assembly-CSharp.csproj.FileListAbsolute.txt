@@ -1,0 +1,2 @@
+D:\Kawasaki\second\Git\BADBOYMISCHIEF\BADBOYMISCHIEF\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+D:\Kawasaki\second\Git\BADBOYMISCHIEF\BADBOYMISCHIEF\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

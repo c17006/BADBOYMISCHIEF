@@ -63,6 +63,7 @@
     <Compile Include="Assets\amuro\script\Generator.cs" />
     <Compile Include="Assets\amuro\script\ScoreManager.cs" />
     <Compile Include="Assets\daiya\script\GameDirector.cs" />
+    <Compile Include="Assets\daiya\script\ItemButtonController.cs" />
     <Compile Include="Assets\daiya\script\ItemTime.cs" />
     <Compile Include="Assets\daiya\script\Player.cs" />
     <Compile Include="Assets\daiya\script\Result.cs" />
@@ -78,10 +79,10 @@
     <Compile Include="Assets\kento\gomi3.cs" />
     <Compile Include="Assets\kuma\gomi4.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/Kawasaki/first/GameCreate/BADBOYMISCHIEF/BADBOYMISCHIEF/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/Kawasaki/second/Git/BADBOYMISCHIEF/BADBOYMISCHIEF/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Kawasaki/first/GameCreate/BADBOYMISCHIEF/BADBOYMISCHIEF/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Kawasaki/second/Git/BADBOYMISCHIEF/BADBOYMISCHIEF/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -256,6 +257,9 @@
     </Reference>
     <Reference Include="Unity.Locator">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Unity.Locator.dll</HintPath>
+    </Reference>
+    <Reference Include="Vuforia.UnityExtensions">
+      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
