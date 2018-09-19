@@ -10,7 +10,7 @@ public class GameDirector : MonoBehaviour {
     // クリアステージのシーン名
     public static string clearStage;
     // ゲームタイム
-    public float gameTime = 10.0f;
+    public float gameTime = 60.0f;
     // ゲームタイム表示用テキスト
     [SerializeField]
     private Text timeText;

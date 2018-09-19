@@ -93,14 +93,14 @@ public class Player : MonoBehaviour {
     private void GenerateItem() {
         if (GetTouchedPoint().y <= 650 && GetTouchedPoint().y >= -600) {
             if (isSelectedItems[itemNumber] && itemTime[itemNumber] <= 0) {
-                Instantiate(GetSelectItme(), GetTouchedPoint(), Quaternion.identity);
+                Instantiate(GetSelectItem(), GetTouchedPoint(), Quaternion.identity);
                 itemTime[itemNumber] = itemDelay[itemNumber];
             }
         }
     }
 
     // 生成されるアイテムを返す
-    private GameObject GetSelectItme() {
+    private GameObject GetSelectItem() {
         return itemList[Array.IndexOf(isSelectedItems, true)];
     }
 
