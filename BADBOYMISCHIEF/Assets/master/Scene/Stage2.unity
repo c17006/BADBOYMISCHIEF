@@ -633,6 +633,26 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnPushItemButton
       objectReference: {fileID: 0}
+    - target: {fileID: 114369156910879036, guid: 16ca0a471cf855e4ba03bcc5e44e4a5b,
+        type: 2}
+      propertyPath: itemDelayImage
+      value: 
+      objectReference: {fileID: 666097891}
+    - target: {fileID: 114017656199652146, guid: 16ca0a471cf855e4ba03bcc5e44e4a5b,
+        type: 2}
+      propertyPath: itemDelayImage
+      value: 
+      objectReference: {fileID: 666097890}
+    - target: {fileID: 114476677013558484, guid: 16ca0a471cf855e4ba03bcc5e44e4a5b,
+        type: 2}
+      propertyPath: itemDelayImage
+      value: 
+      objectReference: {fileID: 666097889}
+    - target: {fileID: 114113149653852498, guid: 16ca0a471cf855e4ba03bcc5e44e4a5b,
+        type: 2}
+      propertyPath: itemDelayImage
+      value: 
+      objectReference: {fileID: 666097888}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16ca0a471cf855e4ba03bcc5e44e4a5b, type: 2}
   m_IsPrefabParent: 0
@@ -718,6 +738,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e630c006d373e8b4d9b4c04d49090641, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &666097888 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114687546305140792, guid: 16ca0a471cf855e4ba03bcc5e44e4a5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 666097876}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &666097889 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114729269445080756, guid: 16ca0a471cf855e4ba03bcc5e44e4a5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 666097876}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &666097890 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114530509770064468, guid: 16ca0a471cf855e4ba03bcc5e44e4a5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 666097876}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &666097891 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114308673988669328, guid: 16ca0a471cf855e4ba03bcc5e44e4a5b,
+    type: 2}
+  m_PrefabInternal: {fileID: 666097876}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &684985053
 GameObject:
   m_ObjectHideFlags: 0

@@ -1982,16 +1982,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7030cf7015a5e3140aecb125a5b801ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  evatext: {fileID: 455860788}
-  Score: {fileID: 2036717255}
-  Teacher: {fileID: 664898769}
-  PTTeacher: {fileID: 1238525311}
-  ScienceTeacher: {fileID: 64936152}
-  kyoutou: {fileID: 582980796}
-  HeadTeacher: {fileID: 1555453303}
-  In: {fileID: 929014573}
-  Pop: {fileID: 767660083}
-  NextButton: {fileID: 446467444}
+  scoreText: {fileID: 2036717255}
+  normalteacherText: {fileID: 664898769}
+  peteacherText: {fileID: 1238525311}
+  scienceteacherText: {fileID: 64936152}
+  assistantprincipalteacherText: {fileID: 582980796}
+  headteacherText: {fileID: 1555453303}
+  passedCountText: {fileID: 929014573}
+  pop: {fileID: 767660083}
+  nextButton: {fileID: 446467444}
   starImages:
   - {fileID: 28367714}
   - {fileID: 1468210264}

@@ -41,13 +41,9 @@ public class Player : MonoBehaviour {
     void Update() {
         ItemTimer();
 
-        if (Input.GetMouseButtonDown(0) && gamedirector.gameTime > 0) {
+        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(0)) && gamedirector.gameTime > 0) {
             GenerateItem();
-
         }
-        //if (Input.touchCount > 0 && gd.gametime > 0) {
-        //    GenerateItem();
-        //}
     }
 
     // セレクトアイテムを変更する

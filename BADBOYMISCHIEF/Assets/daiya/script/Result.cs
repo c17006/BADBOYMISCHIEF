@@ -48,10 +48,10 @@ public class Result : MonoBehaviour {
     // リザルトシーンを送らせて遷移させる
     private void CloseResultScene() {
         resultCloseTime -= Time.deltaTime;
-        if (GameDirector.clearStage == "Stage5" && Input.touchCount > 0 && resultCloseTime <= 0) {
+        if (GameDirector.clearStage == "Stage5" && (Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && resultCloseTime <= 0) {
             Destroy(nextButton);
             pop.SetActive(true);
-        } else if (Input.touchCount > 0 && resultCloseTime <= 0) {
+        } else if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && resultCloseTime <= 0) {
             pop.SetActive(true);
         }
     }
